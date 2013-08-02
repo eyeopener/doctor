@@ -18,7 +18,8 @@ public class Sense extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sense);
+		setContentView(R.layout.tab_indicator_horizontal);
+		parseHorizontalTab();
 
 	}
 
