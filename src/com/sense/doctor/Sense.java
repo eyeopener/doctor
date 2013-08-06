@@ -1,6 +1,7 @@
 package com.sense.doctor;
 
 
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,12 +9,19 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
@@ -26,9 +34,26 @@ enum WhichView {
 
 public class Sense extends Activity {
 
-	WelcomeView wv;//进入欢迎界面
-	WhichView curr;//当前枚举值	
-	
+	WelcomeView wv;// 进入欢迎界面
+	WhichView curr;// 当前枚举值
+
+
+	int mov_start_x = 0;// 声明起点坐标
+	int mov_start_y = 0;
+	int mov_end_x = 0;// 声明起点坐标
+	int mov_end_y = 0;
+
+
+
+	int m_screenWith = 450;
+	int m_PaitMarginLeft = 0;
+	int m_PaitMarginTop = 60;
+	int m_PaitWidth = 450;
+	int m_PaitHeigth = 30;
+
+	int m_LableMarginTop = 20;
+	int m_LableHeigth = 25;
+
 	@SuppressLint("HandlerLeak")
 	Handler hd = new Handler()// 声明消息处理器
 	{
@@ -37,11 +62,11 @@ public class Sense extends Activity {
 		{
 			switch (msg.what) {
 			case 0:// 进入欢迎界面
-					 goToWelcomeView();
+				goToWelcomeView();
 
 				break;
 			case 1:// 进入菜单界面
-					parseHorizontalTab();
+				parseHorizontalTab();
 				break;
 			case 2:// 进入关于界面
 					// setContentView(R.layout.about);
@@ -69,21 +94,19 @@ public class Sense extends Activity {
 
 		setContentView(R.layout.main_tab_horizontal);
 
-
-		this.hd.sendEmptyMessage(0); // 发送消息进入欢迎界面
+		this.hd.sendEmptyMessage(1); // 发送消息进入欢迎界面
 
 	}
-	 
-	public void goToWelcomeView()
-	    {
-	    	if(wv==null)//如果该对象没创建则创建
-	    	{
-	    		wv=new WelcomeView(this);
-	    	}
-	    	setContentView(wv);
-	    	curr=WhichView.WELCOME_VIEW;//标识当前所在界面
-	    }
-	
+
+	public void goToWelcomeView() {
+		if (wv == null)// 如果该对象没创建则创建
+		{
+			wv = new WelcomeView(this);
+		}
+		setContentView(wv);
+		curr = WhichView.WELCOME_VIEW;// 标识当前所在界面
+	}
+
 	Drawable icon_tab_1, icon_tab_2, icon_tab_3, icon_tab_4;
 
 	private void parseHorizontalTab() {
@@ -91,16 +114,51 @@ public class Sense extends Activity {
 		// 选项卡：TabWidget->android:id/tabs
 		// 选项内容：FrameLayout android:id="android:id/tabcontent"
 		setContentView(R.layout.main_tab_horizontal);
-		curr=WhichView.MAIN_MENU;//标识当前所在界面	
-		
+		curr = WhichView.MAIN_MENU;// 标识当前所在界面
+
 		final TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
 		tabHost.setup();
 		icon_tab_1 = this.getResources().getDrawable(R.drawable.ic_launcher);
 		icon_tab_2 = this.getResources().getDrawable(R.drawable.ic_launcher);
 		icon_tab_3 = this.getResources().getDrawable(R.drawable.ic_launcher);
 		icon_tab_4 = this.getResources().getDrawable(R.drawable.ic_launcher);
-	
+
 		createHorizontalTab(tabHost);
+
+
+//		// 显示文本
+//		LinearLayout llTv = new LinearLayout(this.getBaseContext());
+//		llTv.setOrientation(LinearLayout.HORIZONTAL);
+//		llTv.setGravity(Gravity.CENTER);
+//
+//		LinearLayout.LayoutParams lpTv = new LinearLayout.LayoutParams(
+//				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+//		lpTv.topMargin = 0;
+//		lpTv.leftMargin = 50;
+//
+//		TextView mTV = new TextView(this.getBaseContext());
+//		mTV.setText("0.0");
+//		mTV.setTextColor(Color.RED);
+//		mTV.setTextSize(14);
+//		mTV.setWidth(100);
+//		llTv.addView(mTV, lpTv);
+//
+//		// 设置画图view
+//		LinearLayout llView = new LinearLayout(this.getBaseContext());
+//		llView.setOrientation(LinearLayout.HORIZONTAL);
+//		LinearLayout.LayoutParams lpView = new LinearLayout.LayoutParams(
+//				LayoutParams.MATCH_PARENT, 180);
+//		// lpView.weight = 1;
+//		lpView.topMargin = 10;
+//		lpView.leftMargin = 0;
+//		com.sense.doctor.DrawLineView mMyView = new DrawLineView(this);
+//		llView.addView(mMyView, lpView);
+//
+//		ll.addView(llView);
+//		ll.addView(llTv);
+//		ll.addView(llBtn);
+
+
 
 	}
 
