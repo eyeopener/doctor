@@ -2,6 +2,7 @@ package com.sense.doctor;
 
 
 
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,6 +19,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.ViewGroup.LayoutParams;
@@ -37,13 +39,10 @@ public class Sense extends Activity {
 	WelcomeView wv;// 进入欢迎界面
 	WhichView curr;// 当前枚举值
 
-
 	int mov_start_x = 0;// 声明起点坐标
 	int mov_start_y = 0;
 	int mov_end_x = 0;// 声明起点坐标
 	int mov_end_y = 0;
-
-
 
 	int m_screenWith = 450;
 	int m_PaitMarginLeft = 0;
@@ -69,8 +68,8 @@ public class Sense extends Activity {
 				parseHorizontalTab();
 				break;
 			case 2:// 进入关于界面
-					// setContentView(R.layout.about);
-					// curr=WhichView.ABOUT_VIEW;
+				setView();
+				// curr=WhichView.ABOUT_VIEW;
 				break;
 			case 3:// 进入帮助界面
 					// setContentView(R.layout.help);
@@ -124,41 +123,39 @@ public class Sense extends Activity {
 		icon_tab_4 = this.getResources().getDrawable(R.drawable.ic_launcher);
 
 		createHorizontalTab(tabHost);
+		this.hd.sendEmptyMessage(2); // 发送消息进入欢迎界面
 
-
-//		// 显示文本
-//		LinearLayout llTv = new LinearLayout(this.getBaseContext());
-//		llTv.setOrientation(LinearLayout.HORIZONTAL);
-//		llTv.setGravity(Gravity.CENTER);
-//
-//		LinearLayout.LayoutParams lpTv = new LinearLayout.LayoutParams(
-//				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-//		lpTv.topMargin = 0;
-//		lpTv.leftMargin = 50;
-//
-//		TextView mTV = new TextView(this.getBaseContext());
-//		mTV.setText("0.0");
-//		mTV.setTextColor(Color.RED);
-//		mTV.setTextSize(14);
-//		mTV.setWidth(100);
-//		llTv.addView(mTV, lpTv);
-//
-//		// 设置画图view
-//		LinearLayout llView = new LinearLayout(this.getBaseContext());
-//		llView.setOrientation(LinearLayout.HORIZONTAL);
-//		LinearLayout.LayoutParams lpView = new LinearLayout.LayoutParams(
-//				LayoutParams.MATCH_PARENT, 180);
-//		// lpView.weight = 1;
-//		lpView.topMargin = 10;
-//		lpView.leftMargin = 0;
-//		com.sense.doctor.DrawLineView mMyView = new DrawLineView(this);
-//		llView.addView(mMyView, lpView);
-//
-//		ll.addView(llView);
-//		ll.addView(llTv);
-//		ll.addView(llBtn);
-
-
+		// // 显示文本
+		// LinearLayout llTv = new LinearLayout(this.getBaseContext());
+		// llTv.setOrientation(LinearLayout.HORIZONTAL);
+		// llTv.setGravity(Gravity.CENTER);
+		//
+		// LinearLayout.LayoutParams lpTv = new LinearLayout.LayoutParams(
+		// LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		// lpTv.topMargin = 0;
+		// lpTv.leftMargin = 50;
+		//
+		// TextView mTV = new TextView(this.getBaseContext());
+		// mTV.setText("0.0");
+		// mTV.setTextColor(Color.RED);
+		// mTV.setTextSize(14);
+		// mTV.setWidth(100);
+		// llTv.addView(mTV, lpTv);
+		//
+		// // 设置画图view
+		// LinearLayout llView = new LinearLayout(this.getBaseContext());
+		// llView.setOrientation(LinearLayout.HORIZONTAL);
+		// LinearLayout.LayoutParams lpView = new LinearLayout.LayoutParams(
+		// LayoutParams.MATCH_PARENT, 180);
+		// // lpView.weight = 1;
+		// lpView.topMargin = 10;
+		// lpView.leftMargin = 0;
+		// com.sense.doctor.DrawLineView mMyView = new DrawLineView(this);
+		// llView.addView(mMyView, lpView);
+		//
+		// ll.addView(llView);
+		// ll.addView(llTv);
+		// ll.addView(llBtn);
 
 	}
 
@@ -201,6 +198,47 @@ public class Sense extends Activity {
 		titleView.setText(title);
 		iconView.setImageDrawable(icon);
 		return tabIndicator;
+	}
+
+	private void setView() {
+		LinearLayout tab1 = (LinearLayout) findViewById(R.id.id_tab_view1);
+		// setContentView(tab1);
+
+		// Button mBtnClean = new Button(this.getBaseContext());
+		// mBtnClean.setText("清空");
+		// mBtnClean.setTextColor(Color.BLACK);
+		// mBtnClean.setTextSize(14);
+		// mBtnClean.setWidth(120);
+		// mBtnClean.setHeight(20);
+		// tab1.addView(mBtnClean);
+        //显示文本
+        LinearLayout llTv = new LinearLayout(this.getBaseContext());  
+        llTv.setOrientation(LinearLayout.HORIZONTAL); 
+        llTv.setGravity(Gravity.CENTER);
+        
+        LinearLayout.LayoutParams lpTv = new LinearLayout.LayoutParams(  
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);  
+        lpTv.topMargin = 0;  
+        lpTv.leftMargin = 50;
+        
+        TextView mTV = new TextView(this.getBaseContext());
+        mTV.setText("0.0");    
+        mTV.setTextColor(Color.RED);  
+        mTV.setTextSize(14);   
+        mTV.setWidth(100);
+        llTv.addView(mTV,lpTv);     
+        
+            
+
+		tab1.addView(llTv);
+	
+		// Button mBtnGet = new Button(this.getBaseContext());
+		// mBtnGet.setText("读取");
+		// mBtnGet.setTextColor(Color.BLACK);
+		// mBtnGet.setTextSize(14);
+		// mBtnGet.setWidth(120);
+		// mBtnGet.setHeight(20);
+		// tab1.addView(mBtnGet);
 	}
 
 	@Override

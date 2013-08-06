@@ -47,25 +47,37 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical" >
 
-                        <ImageButton
-                            android:id="@+id/ibzzcx"
-                            android:layout_width="100dip"
-                            android:layout_height="40dip"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dip"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/zzcx_button" >
-                        </ImageButton>
+                        <LinearLayout
+                            android:id="@+id/id_tab_view1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
 
-                        <ImageButton
-                            android:id="@+id/ibcccx"
-                            android:layout_width="100dip"
-                            android:layout_height="40dip"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/cccx_button" >
-                        </ImageButton>
-                        
+                            <ImageButton
+                                android:id="@+id/ibzzcx"
+                                android:layout_width="100dip"
+                                android:layout_height="40dip"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="10dip"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/zzcx_button" >
+                            </ImageButton>
+
+                            <ImageButton
+                                android:id="@+id/ibcccx"
+                                android:layout_width="100dip"
+                                android:layout_height="40dip"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/cccx_button" >
+                            </ImageButton>
+                        </LinearLayout>
+
+<!--                         <ImageView -->
+<!--                             android:id="@+id/id_image1" -->
+<!--                             android:layout_width="wrap_content" -->
+<!--                             android:layout_height="wrap_content" -->
+<!--                             android:layout_gravity="center_horizontal|center_vertical" /> -->
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -80,11 +92,10 @@
                         android:layout_height="fill_parent"
                         android:orientation="horizontal" >
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:src="@drawable/a713" />
+<!--                         <ImageView -->
+<!--                             android:layout_width="wrap_content" -->
+<!--                             android:layout_height="wrap_content" -->
+<!--                             android:layout_gravity="center_horizontal|center_vertical" /> -->
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -99,11 +110,10 @@
                         android:layout_height="fill_parent"
                         android:orientation="horizontal" >
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:src="@drawable/a714" />
+<!--                         <ImageView -->
+<!--                             android:layout_width="wrap_content" -->
+<!--                             android:layout_height="wrap_content" -->
+<!--                             android:layout_gravity="center_horizontal|center_vertical" /> -->
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -118,11 +128,10 @@
                         android:layout_height="fill_parent"
                         android:orientation="horizontal" >
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:src="@drawable/a715" />
+<!--                         <ImageView -->
+<!--                             android:layout_width="wrap_content" -->
+<!--                             android:layout_height="wrap_content" -->
+<!--                             android:layout_gravity="center_horizontal|center_vertical" /> -->
                     </LinearLayout>
                 </HorizontalScrollView>
             </FrameLayout>
