@@ -3,6 +3,8 @@ package com.sense.doctor;
 
 
 
+
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,6 +40,12 @@ public class Sense extends Activity {
 
 	WelcomeView wv;// 进入欢迎界面
 	WhichView curr;// 当前枚举值
+	
+	private Canvas canvas;// 画布
+	private Bitmap bitmap;// 位图
+	private Paint paint;
+	
+	DrawLineView view_show;
 
 	int mov_start_x = 0;// 声明起点坐标
 	int mov_start_y = 0;
@@ -107,6 +115,7 @@ public class Sense extends Activity {
 	}
 
 	Drawable icon_tab_1, icon_tab_2, icon_tab_3, icon_tab_4;
+	
 
 	private void parseHorizontalTab() {
 		// 注意下面的代码用的是android.R.id.tabhost，在布局中有2个ID参数是固定的需要使用固定的ID:
@@ -123,6 +132,8 @@ public class Sense extends Activity {
 		icon_tab_4 = this.getResources().getDrawable(R.drawable.ic_launcher);
 
 		createHorizontalTab(tabHost);
+		
+		
 		this.hd.sendEmptyMessage(2); // 发送消息进入欢迎界面
 
 		// // 显示文本
@@ -231,6 +242,24 @@ public class Sense extends Activity {
             
 
 		tab1.addView(llTv);
+		
+
+		
+		 // 设置画图view  
+//        LinearLayout llView = new LinearLayout(this.getBaseContext());  
+//        llView.setOrientation(LinearLayout.HORIZONTAL); 
+//        LinearLayout.LayoutParams lpView = new LinearLayout.LayoutParams(  
+//                LayoutParams.MATCH_PARENT, 180);  
+//        //lpView.weight = 1;  
+//        lpView.topMargin = 10;  
+//        lpView.leftMargin = 0;        
+//        DrawLineView mMyView = new DrawLineView(this);
+//        llView.addView(mMyView,lpView);
+//                 
+  //      DrawLineView mMyView = new DrawLineView(this);
+ //       tab1.addView(mMyView);  
+        
+        
 	
 		// Button mBtnGet = new Button(this.getBaseContext());
 		// mBtnGet.setText("读取");
@@ -246,6 +275,14 @@ public class Sense extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.sense, menu);
 		return true;
+	}
+
+	public Canvas getCanvas() {
+		return canvas;
+	}
+
+	public void setCanvas(Canvas canvas) {
+		this.canvas = canvas;
 	}
 
 }
